@@ -1,0 +1,43 @@
+출처- https://programmers.co.kr/learn/courses/30/lessons/42862
+전체 학생의 수 n, 체육복을 도난당한 학생들의 번호가 담긴 배열 lost, 
+여벌의 체육복을 가져온 학생들의 번호가 담긴 배열 reserve가 매개변수로 주어질 때, 
+체육수업을 들을 수 있는 학생의 최댓값을 return 하도록 solution 함수를 작성해주세요.
+
+
+function solution(n, lost, reserve) {
+    const lostcopy = [...lost].sort((a,b) => a-b);
+    const reservecopy = [...reserve].sort((a,b) => a-b);
+    
+    const filterlost = lostcopy.filter(el => {
+        return !reserve.includes(el)
+    })
+
+    const filterreserve = reservecopy.filter(el => {
+        return !lost.includes(el)
+    })
+    
+    let partperson = n-filterlost.length-filterreserve.length
+    
+    let ele;
+for(let i=0; i<filterlost.length; i++){
+    for(let y=0; y<filterreserve.length; y++){
+    if((filterlost[i]-1 === filterreserve[y] || filterlost[i]+1 === filterreserve[y]) && !Array.isArray(filterreserve[y]) ){
+     ele = filterreserve[y]
+      filterreserve[y] = [ele,filterlost[i]]
+      filterlost.shift()
+    }
+        }
+    }
+   filterreserve.forEach(el =>{
+       if(Array.isArray(el)){
+           partperson = partperson + 2
+       }
+       else {
+           partperson++
+       }
+   })
+    return partperson
+    
+}
+
+모든 테스트 케이스 
