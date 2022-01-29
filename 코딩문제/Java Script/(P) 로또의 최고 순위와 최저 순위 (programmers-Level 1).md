@@ -12,6 +12,7 @@
 |최저 순위 번호	31	0→11	44	1	0→7	25	2개 번호 일치, 5등
 
 나의 풀이(50M) :
+```js
 function solution(lottos, win_nums) {
     const copylotto = [...lottos]
     const copywin =[...win_nums]
@@ -48,3 +49,4 @@ function solution(lottos, win_nums) {
 }
 
 //모든 테스트 케이스 통과
+```
