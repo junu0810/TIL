@@ -10,6 +10,7 @@
 
 
 나의 풀이(1h 30M) :
+```js
 function solution(id_list, report, k) {
     const reportcopy = [...report];
     const idcopy = [...id_list]
@@ -69,3 +70,4 @@ function solution(id_list, report, k) {
 }
 
 //testCase => 3,11,15,21 미통과
+```
