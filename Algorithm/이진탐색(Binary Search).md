@@ -31,4 +31,60 @@
 
 ```
 
-#### 2. 예시문제 
+#### 2. 전체 탐색과의 비교
+
+다음 배열에서 target(두번쨰 인수값)을 찾아라 
+
+([1,2,3,4,5,6,7,8,9,10,11,12,13,14,15,16,17] , 13)
+
+binarySearch를 활용한 내 풀이(1h 40M) :
+```js
+function binarySearch(arr, target,started) {
+    if(arr.length <= 2 && arr.indexOf(target) !== false){
+      return arr.indexOf(target)
+    }
+    let start;
+    let end = arr.length;
+  
+    started === undefined ? start = 0 : start = started;
+  
+    const copy = [...arr];
+  
+    // let middle = Number((arr.length/2).toFixed())-1
+    let middle = Math.ceil(arr.length/2)-1
+  
+    if(copy[middle] > target){
+      let slicearr = copy.slice(0,middle)
+      return binarySearch(slicearr,target,start)
+    }
+    else if(copy[middle] < target){
+      let slicearr = copy.slice(middle,end)
+     return binarySearch(slicearr,target,middle+start)
+    }
+    else if(copy[middle]  === target){
+      return start+middle
+    }
+  };
+
+```
+전체 탐색을 할 겨우 풀이:
+```js
+function usuallySearch(arr, target){
+    const copy = [...arr];
+    for(let i=0; i<copy.length; i++){
+        if(arr[i] === target){
+            return i
+        }
+    }
+
+}
+```
+
+시간비교
+
+<img width="229" alt="스크린샷 2022-02-03 오후 10 43 37" src="https://user-images.githubusercontent.com/89199949/152379820-ae5772b4-04f9-4c09-b54b-8c3facc869e1.png">
+
+<img width="229" alt="스크린샷 2022-02-03 오후 10 43 45" src="https://user-images.githubusercontent.com/89199949/152379830-62d14b9a-2c01-44bc-b772-992a3fa65451.png">
+
+- 시간이 절약이 되는것을 확인 하였고 자세한 시간은 구동환경에따라 상이 할 수 있다.
+
