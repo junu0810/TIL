@@ -78,7 +78,7 @@ function solution(n, left, right) {
    })
    return resultarr.slice(left,right+1)   
 ```
-
+문제가 풀리지 않는것은 아니나 시간초과가 결과가 몇개씩 나온다.
 시간 복잡도를 다시한번더 생각해보면 좋을거 같다.
 시간 복잡도가 아닌 2차원배열로 전체를 만들고 값을 찾으려고 하면 너무 많은 시간이 소요된다. 
 left와 right값으로 규칙성을 찾아서 (left+a) ~ (right+a) 만큼 생성해야한다.
