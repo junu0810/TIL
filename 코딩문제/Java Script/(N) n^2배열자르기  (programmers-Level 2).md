@@ -19,6 +19,7 @@ i = 1, 2, 3, ..., n에 대해서, 다음 과정을 반복합니다.
 나의 풀이(1h) :
 
 ```js
+풀이1) 
 function solution(n, left, right) {
 
     let background = []
@@ -52,6 +53,33 @@ function solution(n, left, right) {
     })
     return resultarr.slice(left,right+1)
 }
+
+풀이2)
+    
+    let back = [];
+    let count = 1
+    for(let i=1; i<=n; i++){
+        let ele = [];
+        for(let y=1; y<=n; y++){
+            if(i <= y){
+                ele.push(y)
+            }
+            else{
+                ele.push(count)
+            }
+            count
+        }
+        back.push(ele)
+        count++
+    }
+   let resultarr = [];
+   back.forEach(el =>{
+       resultarr = resultarr.concat(el)
+   })
+   return resultarr.slice(left,right+1)   
 ```
 
 시간 복잡도를 다시한번더 생각해보면 좋을거 같다.
+시간 복잡도가 아닌 2차원배열로 전체를 만들고 값을 찾으려고 하면 너무 많은 시간이 소요된다. 
+left와 right값으로 규칙성을 찾아서 (left+a) ~ (right+a) 만큼 생성해야한다.
+
